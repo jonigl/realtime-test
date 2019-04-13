@@ -25,15 +25,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 io.on('connection', function(socket) {
   var addedUser = false;
 
-  // when the client emits 'new message', this listens and executes
-  socket.on('new message', function(data) {
-    // we tell the client to execute 'new message'
-    socket.broadcast.emit('new message', {
-      username: socket.username,
-      message: data
-    });
-  });
-
   socket.conn.on('heartbeat', function() {
     if (!addedUser) {
       // Don't start upserting until the user has added themselves.
@@ -68,20 +59,6 @@ io.on('connection', function(socket) {
         username: socket.username,
         numUsers: users.length
       });
-    });
-  });
-
-  // when the client emits 'typing', we broadcast it to others
-  socket.on('typing', function() {
-    socket.broadcast.emit('typing', {
-      username: socket.username
-    });
-  });
-
-  // when the client emits 'stop typing', we broadcast it to others
-  socket.on('stop typing', function() {
-    socket.broadcast.emit('stop typing', {
-      username: socket.username
     });
   });
 

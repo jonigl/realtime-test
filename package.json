@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "A simple chat client using socket.io",
   "main": "index.js",
-  "author": "Grant Timmerman",
+  "author": "Jonathan Gastón Löwenstern (based on the Grant Timmerman chat with socket.io)",
   "private": true,
   "license": "BSD",
   "dependencies": {
