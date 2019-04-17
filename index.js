@@ -5,7 +5,7 @@ var path = require('path');
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var redis = require('socket.io-redis');
-io.adapter(redis({ host: process.env.REDIS_ENDPOINT, port: 6379 }));
+io.adapter(redis({ host: process.env.REDIS_ENDPOINT, port: process.env.REDIS_ENDPOINT }));
 
 var Presence = require('./lib/presence');
 
