@@ -43,7 +43,7 @@ $(function() {
   // Socket events
 
   // Whenever the server emits 'login', log the login message
-  socket.on('login', function (data) {
+  socket.on('user added', function (data) {
     connected = true;
     // Display the welcome message
     log(data.username + ' joined');
@@ -69,9 +69,6 @@ $(function() {
 
   socket.on('reconnect', function () {
     log('you have been reconnected');
-    if (username) {
-      socket.emit('add user', username);
-    }
   });
 
   socket.on('reconnect_error', function () {

@@ -41,22 +41,21 @@ io.on('connection', function(socket) {
     if (addedUser) {
       return;
     }
+    addedUser = true;
 
     // we store the username in the socket session for this client
     socket.username = username;
     Presence.upsert(socket.id, {
       username: socket.username
     });
-    addedUser = true;
+    
 
     Presence.list(function(users) {
-      socket.emit('login', {
+      socket.emit('user added', {
         numUsers: users.length
       });
-
       // echo globally (all clients) that a person has connected
       socket.broadcast.emit('user joined', {
-        username: socket.username,
         numUsers: users.length
       });
     });
