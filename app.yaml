@@ -12,7 +12,7 @@ env_variables:
 # consistently with multiple users. To work across multiple instances, an
 # extra-instance messaging system or data store would be needed.
 manual_scaling:
-  instances: 1
+  instances: 3
 
 network:
   session_affinity: true
