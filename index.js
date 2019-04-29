@@ -10,8 +10,8 @@ io.adapter(redis({ host: process.env.REDIS_ENDPOINT, port: process.env.REDIS_POR
 var Presence = require('./lib/presence');
 
 // Lower the heartbeat timeout
-io.set('heartbeat timeout', 8000);
-io.set('heartbeat interval', 4000);
+//io.set('heartbeat timeout', 8000);
+//io.set('heartbeat interval', 4000);
 
 var port = process.env.CHAT_PORT || 3000;
 
@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 io.on('connection', function(socket) {
   var addedUser = false;
 
-  socket.conn.on('heartbeat', function() {
+ /* socket.conn.on('heartbeat', function() {
     if (!addedUser) {
       // Don't start upserting until the user has added themselves.
       return;
@@ -35,6 +35,7 @@ io.on('connection', function(socket) {
       username: socket.username
     });
   });
+  */
 
   // when the client emits 'add user', this listens and executes
   socket.on('add user', function(username) {

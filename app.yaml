@@ -1,5 +1,5 @@
 # [START appengine_websockets_yaml]
-runtime: custom
+runtime: nodejs
 env: flex
 
 # update with Redis instance details
@@ -12,15 +12,15 @@ env_variables:
 # consistently with multiple users. To work across multiple instances, an
 # extra-instance messaging system or data store would be needed.
 automatic_scaling:
-  min_num_instances: 4
-  max_num_instances: 15
+  min_num_instances: 2
+  max_num_instances: 2
   cool_down_period_sec: 180
   cpu_utilization:
     target_utilization: 0.6
 
 resources:
-  cpu: 2
-  memory_gb: 4
+  cpu: 10
+  memory_gb: 10
   disk_size_gb: 10
 
 network:

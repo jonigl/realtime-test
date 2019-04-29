@@ -4,7 +4,9 @@ $(function() {
   // Prompt for setting a username
   var username;
 
-  var socket = io();
+  var socket = io({
+    transports: ['websocket']
+  });
 
   socket.emit('add user', username);
 
